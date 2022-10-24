@@ -3,8 +3,8 @@ class Node:
     """
     node class that will hold the pointers
     """
-    def __init__(self,val):
-        self.value = val
+    def __init__(self, val):
+        self.val = val
         self.next = None
 
 
@@ -12,6 +12,7 @@ class Linked_list:
     count=0
     def __init__(self):
         self.head=None
+        self.count = 0
        
         
     def append(self, val):
@@ -20,23 +21,24 @@ class Linked_list:
         """
         new_node = Node(val)
         
-        if Linked_list.count == 0:
-            self.head=new_node
+        if self.count == 0:
+            self.head = new_node
             
         else: 
             same = self.head
-            while same.next!=None:
+            while same.next != None:
                 same= same.next
             same.next = new_node
         
-        Linked_list.count += 1
+        self.count += 1
     
     def select_node(self, val):
         """
         this function for selecting a nodes 
         """
         current=self.head
-        while current.value!=val:
+
+        while current.val != val:
             current=current.next
         return current
     
@@ -48,20 +50,28 @@ class Linked_list:
         
         current=self.head
     
-        while current.next!=None:
-            arr.append(current.value)
+        while current.next != None:
+
+            arr.append(current.val)
             current=current.next
         
-        arr.append(current.value)
+        arr.append(current.val)
         
         return arr
     
-    def remove_the_node(self,node):
+    # def remove_the_node(self,node):
+    #     """
+    #     will remove the selected node
+    #     """
+    #     node.value=node.next.value
+    #     node.next=node.next.next
+   
+def remove_the_node(node):
         """
         will remove the selected node
         """
-        node.value=node.next.value
+        node.val=node.next.val
         node.next=node.next.next
-   
+
 if __name__=="__main__":
     pass
