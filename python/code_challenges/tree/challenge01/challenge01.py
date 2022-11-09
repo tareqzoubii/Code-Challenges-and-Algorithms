@@ -5,18 +5,37 @@ class Node:
         self.right = None
         self.left = None
 
-class Tree:
-    def trees(self, inorder, preorder):
-        """ 
-        this function to create the tree using in-order and pre-order traversal
-        """
-        if not inorder or not preorder:
-            return None
-        if len(preorder) == 1:
-            return Node(preorder[0])
+def trees(preorder, inorder):
+    '''this function to create the tree using in-order and pre-order traversal to build the tree'''
+    if len(preorder)==0 or  len(inorder)==0:
+        return None
+    
+    root=Node(preorder[0])
+    mid=inorder.index(preorder[0])
+    root.left= trees(preorder[1:mid+1],inorder[:mid])
+    root.right=trees(preorder[mid + 1:],inorder[mid + 1:])
+    return root
 
-        root = Node(preorder[0])
-        indx = inorder.index(preorder[0])
-        root.left = self.trees(preorder[1:indx + 1],inorder[:indx])
-        root.right = self.trees(preorder[indx + 1:],inorder[indx + 1:])
-        return root
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
